@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 using TechTalk.SpecFlow;
 
 namespace Test.Steps
@@ -43,10 +44,26 @@ namespace Test.Steps
             _scenarioContext["ActualResult"] = _scenarioContext.Get<int>("FirstNumber") * _scenarioContext.Get<int>("SecondNumber");
         }
 
+        [Given(@"Divide a random number with 2")]
+        public void GivenDivideARandomNumberWith()
+        {
+            int randomNumber = new Random().Next(2, 50);
+            Console.WriteLine(randomNumber);
+            _scenarioContext["ActualResult"] = randomNumber % 2;
+        }
+
+
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int result)
         {
             Assert.AreEqual(result, _scenarioContext.Get<int>("ActualResult"));
         }
+
+        [Then(@"Remainder should be (.*)")]
+        public void ThenRemainderShouldBe(int expectedResult)
+        {
+            Assert.AreEqual(expectedResult, _scenarioContext.Get<int>("ActualResult"));
+        }
+
     }
 }
