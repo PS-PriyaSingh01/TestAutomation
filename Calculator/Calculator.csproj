@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JunitXml.TestLogger" Version="3.0.114" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+    <PackageReference Include="NunitXml.TestLogger" Version="3.0.127" />
   </ItemGroup>
 
 </Project>
