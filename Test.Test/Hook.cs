@@ -78,7 +78,7 @@ namespace PowerSportsSupportS.Tests
                 foreach (XmlNode n1 in n.ChildNodes)
                 {                    
                     if (n1.Attributes["result"]?.InnerText == "Fail")
-                        text = n1.Attributes["type"]?.InnerText; //or loop through its children as well
+                        text = n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText; //or loop through its children as well
                 }
             }
 
