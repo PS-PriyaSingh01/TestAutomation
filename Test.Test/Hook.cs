@@ -58,33 +58,43 @@ namespace PowerSportsSupportS.Tests
         {
             //Flush report post test run completion
             //extent.Flush();
+
+            // Need to identify a way to identify the failed test post the publish report is generated - Or Not
             Console.WriteLine(Environment.CurrentDirectory);
             XmlDocument doc = new XmlDocument();
+
+
             //doc.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults\\TestResults.xml");
-            doc.Load(Path.Combine(Environment.CurrentDirectory,
-                            @"..\..\..\TestResults\TestResults.xml"));
-            //XDocument doc = XDocument.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults.xml");
-
-            //string classnae = (string)doc.Root.Element("type");
-
-            //string classnae = (string )doc.Root.Element("assembly/collection/test.type");
-            //string classnae1 = (string)doc.Root.Element("assembly/collection/test.type.value");
-
-            XmlNode node = doc.DocumentElement.FirstChild;
-
-            string text = string.Empty;
-            foreach (XmlNode n in node.ChildNodes)
+            try
             {
-                foreach (XmlNode n1 in n.ChildNodes)
-                {                    
-                    if (n1.Attributes["result"]?.InnerText == "Fail")
-                        text = n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText; //or loop through its children as well
+                doc.Load(Path.Combine(Environment.CurrentDirectory,
+                                @"..\..\..\TestResults\TestResults.xml"));
+                //XDocument doc = XDocument.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults.xml");
+
+                //string classnae = (string)doc.Root.Element("type");
+
+                //string classnae = (string )doc.Root.Element("assembly/collection/test.type");
+                //string classnae1 = (string)doc.Root.Element("assembly/collection/test.type.value");
+
+                XmlNode node = doc.DocumentElement.FirstChild;
+
+                string text = string.Empty;
+                foreach (XmlNode n in node.ChildNodes)
+                {
+                    foreach (XmlNode n1 in n.ChildNodes)
+                    {
+                        if (n1.Attributes["result"]?.InnerText == "Fail")
+                            text = n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText; //or loop through its children as well
+                    }
                 }
+
+                File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
+                                @"\ReRunTestResults.txt"), text);
             }
-
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
-                            @"\ReRunTestResults.txt"), text);
-
+            catch
+            {
+                Console.WriteLine("TestResults file doesn't exist");
+            }
 
             //var query = from c in doc.Document.Element.SelectSingleNode("assembly/collection/test")
             //            where (string)c.Attribute("result") == "Pass"
