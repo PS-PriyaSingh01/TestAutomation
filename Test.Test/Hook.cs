@@ -83,7 +83,7 @@ namespace PowerSportsSupportS.Tests
             }
 
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
-                            @"..\..\..\TestResults\ReRunTestResults.txt"), text);
+                            @"\ReRunTestResults.txt"), text);
 
 
             //var query = from c in doc.Document.Element.SelectSingleNode("assembly/collection/test")
