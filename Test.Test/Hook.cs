@@ -59,6 +59,8 @@ namespace PowerSportsSupportS.Tests
             //Flush report post test run completion
             //extent.Flush();
 
+            //C:\ProgramData\Jenkins\.jenkins\workspace\TestSuite\Test.Test\bin\Release\netcoreapp3.1
+
             // Need to identify a way to identify the failed test post the publish report is generated - Or Not
             Console.WriteLine("Environment.CurrentDirectory" + Environment.CurrentDirectory);
             XmlDocument doc = new XmlDocument();
