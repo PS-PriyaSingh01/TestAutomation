@@ -65,8 +65,8 @@ namespace PowerSportsSupportS.Tests
 
 
             //doc.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults\\TestResults.xml");
-            try
-            {
+            //try
+            //{
                 doc.Load(Path.Combine(Environment.CurrentDirectory,
                                 @"..\..\..\TestResults\TestResults.xml"));
                 //XDocument doc = XDocument.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults.xml");
@@ -90,11 +90,11 @@ namespace PowerSportsSupportS.Tests
 
                 File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
                                 @"\ReRunTestResults.txt"), text);
-            }
-            catch
-            {
-                Console.WriteLine("TestResults file doesn't exist");
-            }
+            //}
+            //catch
+            //{
+            //    Console.WriteLine("TestResults file doesn't exist");
+            //}
 
             //var query = from c in doc.Document.Element.SelectSingleNode("assembly/collection/test")
             //            where (string)c.Attribute("result") == "Pass"

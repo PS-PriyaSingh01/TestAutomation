@@ -47,6 +47,7 @@ namespace Test.Steps
         [Given(@"Divide a random number with 2")]
         public void GivenDivideARandomNumberWith()
         {
+            Console.WriteLine("Environment.CurrentDirectory" + Environment.CurrentDirectory);
             int randomNumber = new Random().Next(2, 50);
             Console.WriteLine(randomNumber);
             _scenarioContext["ActualResult"] = randomNumber % 2;
