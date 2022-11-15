@@ -69,8 +69,9 @@ namespace PowerSportsSupportS.Tests
             //doc.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults\\TestResults.xml");
             //try
             //{
-                doc.Load(Path.Combine(Environment.CurrentDirectory,
+                //doc.Load(Path.Combine(Environment.CurrentDirectory,
                                 @"..\..\..\TestResults\TestResults.xml"));
+            doc.Load("C:/ProgramData/Jenkins/.jenkins/workspace/TestSuite/Test.Test/TestResults/TestResults.xml");
                 //XDocument doc = XDocument.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults.xml");
 
                 //string classnae = (string)doc.Root.Element("type");
