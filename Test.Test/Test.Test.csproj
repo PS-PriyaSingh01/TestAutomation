@@ -23,4 +23,13 @@
     <Folder Include="TestResults\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ReRunTestResults.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestResults\TestResults.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
