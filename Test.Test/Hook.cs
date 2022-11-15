@@ -70,7 +70,7 @@ namespace PowerSportsSupportS.Tests
             //try
             //{
                 //doc.Load(Path.Combine(Environment.CurrentDirectory,
-                                @"..\..\..\TestResults\TestResults.xml"));
+                 //               @"..\..\..\TestResults\TestResults.xml"));
             doc.Load("C:/ProgramData/Jenkins/.jenkins/workspace/TestSuite/Test.Test/TestResults/TestResults.xml");
                 //XDocument doc = XDocument.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults.xml");
 
