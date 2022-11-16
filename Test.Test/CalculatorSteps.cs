@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
+using System.IO;
+using System.Xml;
 using TechTalk.SpecFlow;
 
 namespace Test.Steps
@@ -66,5 +68,36 @@ namespace Test.Steps
             Assert.AreEqual(expectedResult, _scenarioContext.Get<int>("ActualResult"));
         }
 
+        [Given(@"Read Test Result File")]
+        public void GivenReadTestResultFile()
+        {
+            Console.WriteLine("Environment.CurrentDirectory" + Environment.CurrentDirectory);
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(Path.Combine(Environment.CurrentDirectory,
+                                    @"..\..\..\TestResults\TestResults.xml"));
+
+                XmlNode node = doc.DocumentElement.FirstChild;
+
+                string text = string.Empty;
+                foreach (XmlNode n in node.ChildNodes)
+                {
+                    foreach (XmlNode n1 in n.ChildNodes)
+                    {
+                        if (n1.Attributes["result"]?.InnerText == "Fail")
+                            text = n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText;
+                    }
+                }
+
+                File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
+                                @"\ReRunTestResults.txt"), text);
+            }
+            catch
+            {
+                Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
+                                    @"..\..\..\TestResults\TestResults.xml"));
+            }
+        }
     }
 }

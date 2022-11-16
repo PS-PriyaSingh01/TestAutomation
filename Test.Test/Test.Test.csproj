@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <SpecFlowObsoleteCodeBehindFiles Remove="FeatureFile\Calculator_Add - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="FeatureFile\Calculator_Flake - Copy.feature.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,12 +25,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FeatureFile\Calculator_Flake.feature.cs">
+      <DependentUpon>Calculator_Flake.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="ReRunTestResults.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="TestResults\TestResults.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="FeatureFile\Calculator_Flake.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
 
 </Project>
