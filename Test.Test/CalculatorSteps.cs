@@ -80,13 +80,13 @@ namespace Test.Steps
 
                 XmlNode node = doc.DocumentElement.FirstChild;
 
-                string text = string.Empty;
+                string text = "FullyQualifiedName=";
                 foreach (XmlNode n in node.ChildNodes)
                 {
                     foreach (XmlNode n1 in n.ChildNodes)
                     {
                         if (n1.Attributes["result"]?.InnerText == "Fail")
-                            text = n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText;
+                            text = text + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText;
                     }
                 }
 
@@ -94,7 +94,7 @@ namespace Test.Steps
                                 @"\ReRunTestResults.txt"), text);
             }
             catch
-            {
+            {   
                 Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
                                     @"..\..\..\TestResults\TestResults.xml"));
             }
