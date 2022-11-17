@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TestResults\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="FeatureFile\Calculator_Flake.feature.cs">
       <DependentUpon>Calculator_Flake.feature</DependentUpon>
     </Compile>
@@ -32,9 +28,6 @@
 
   <ItemGroup>
     <None Update="ReRunTestResults.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="TestResults\TestResults.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -91,7 +91,7 @@ namespace Test.Steps
                 }
 
                 File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
-                                @"\ReRunTestResults.txt"), text);
+                                @"..\..\..\ReRunTestResults.txt"), text);
             }
             catch(Exception ex)
             {
