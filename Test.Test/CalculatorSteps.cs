@@ -93,8 +93,9 @@ namespace Test.Steps
                 File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
                                 @"\ReRunTestResults.txt"), text);
             }
-            catch
-            {   
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
                                     @"..\..\..\TestResults\TestResults.xml"));
             }
