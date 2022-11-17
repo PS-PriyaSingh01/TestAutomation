@@ -76,7 +76,7 @@ namespace Test.Steps
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(Path.Combine(Environment.CurrentDirectory,
-                                    @"..\..\..\TestResults\TestResults.xml"));
+                                    @"..\..\..\..\..\lastSuccessfulBuild\artifact\Test.Test\TestResults\TestResults.xml"));
 
                 XmlNode node = doc.DocumentElement.FirstChild;
 
