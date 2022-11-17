@@ -72,11 +72,11 @@ namespace Test.Steps
         public void GivenReadTestResultFile()
         {
             Console.WriteLine("Environment.CurrentDirectory" + Environment.CurrentDirectory);
-            try
-            {
+            //try
+            //{
                 XmlDocument doc = new XmlDocument();
                 doc.Load(Path.Combine(Environment.CurrentDirectory,
-                                    @"..\..\..\..\lastSuccessfulBuild\artifact\Test.Test\TestResults\TestResults.xml"));
+                                    @"..\..\..\..\..\lastSuccessfulBuild\artifact\Test.Test\TestResults\TestResults.xml"));
 
                 XmlNode node = doc.DocumentElement.FirstChild;
 
@@ -92,13 +92,13 @@ namespace Test.Steps
 
                 File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
                                 @"..\..\..\ReRunTestResults.txt"), text);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
-                                    @"..\..\..\TestResults\TestResults.xml"));
-            }
+            //}
+            //catch(Exception ex)
+            //{
+                //Console.WriteLine(ex.Message);
+                //Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
+                //                    @"..\..\..\TestResults\TestResults.xml"));
+            //}
         }
     }
 }
