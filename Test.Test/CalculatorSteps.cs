@@ -92,12 +92,12 @@ namespace Test.Steps
                 foreach (XmlNode n1 in n.ChildNodes)
                 {
                     if (n1.Attributes["result"]?.InnerText == "Fail")
-                        text = text + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText;
+                        text = text + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText + "|";
                 }
             }
 
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
-                            @"..\..\..\ReRunTestResults.txt"), text);
+                            @"..\..\..\ReRunTestResults.txt"), text.Trim('|'));
             //}
             //catch(Exception ex)
             //{
