@@ -75,8 +75,8 @@ namespace Test.Steps
             //try
             //{
             XmlDocument doc = new XmlDocument();
-            doc.Load(Path.Combine(Environment.CurrentDirectory,
-                                @"..\..\..\TestResults\TestResults.xml"));
+            //doc.Load(Path.Combine(Environment.CurrentDirectory,
+            //                    @"..\..\..\TestResults\TestResults.xml"));
 
             //doc.Load("http://localhost:8080/job/TestSuite/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
 
