@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml;
 using TechTalk.SpecFlow;
 
-namespace Test.Steps
+namespace Test
 {
     [Binding]
     public class CalculatorSteps
@@ -78,10 +78,8 @@ namespace Test.Steps
             //doc.Load(Path.Combine(Environment.CurrentDirectory,
             //                    @"..\..\..\TestResults\TestResults.xml"));
 
-            //doc.Load("http://localhost:8080/job/TestSuite/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
-
-            doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
-
+            doc.Load("http://localhost:8080/job/TestSuite/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
+            // doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
             //doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
 
             XmlNode node = doc.DocumentElement.FirstChild;
@@ -104,7 +102,7 @@ namespace Test.Steps
             //Console.WriteLine(ex.Message);
             //Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
             //                    @"..\..\..\TestResults\TestResults.xml"));
-            //}
+            //}     
         }
     }
 }

@@ -2,10 +2,13 @@
 using System.IO;
 using System.Xml;
 
-namespace Calculator
+namespace Test
 {
     public class Cal
     {
+        public int FirstNumber { get; set; }
+        public int SecondNumber { get; set; }
+
         public static void main(string[] args)
         {
             Console.WriteLine("Hello World!");

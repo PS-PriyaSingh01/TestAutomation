@@ -56,52 +56,38 @@ namespace PowerSportsSupportS.Tests
         [AfterTestRun]
         public static void TearDownReport()
         {
-            //Flush report post test run completion
-            //extent.Flush();
-
-            //C:\ProgramData\Jenkins\.jenkins\workspace\TestSuite\Test.Test\bin\Release\netcoreapp3.1
-
-            // Need to identify a way to identify the failed test post the publish report is generated - Or Not
             Console.WriteLine("Environment.CurrentDirectory" + Environment.CurrentDirectory);
-            XmlDocument doc = new XmlDocument();
-
-
-            //doc.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults\\TestResults.xml");
             //try
             //{
-            //    doc.Load(Path.Combine(Environment.CurrentDirectory,
-                        //        @"..\..\..\TestResults\TestResults.xml"));
-            //doc.Load("C:/ProgramData/Jenkins/.jenkins/workspace/TestSuite/Test.Test/TestResults/TestResults.xml");
-                //XDocument doc = XDocument.Load("C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults.xml");
+            //XmlDocument doc = new XmlDocument();
+            //doc.Load(Path.Combine(Environment.CurrentDirectory,
+            //                    @"..\..\..\TestResults\TestResults.xml"));
 
-                //string classnae = (string)doc.Root.Element("type");
+            ////doc.Load("http://localhost:8080/job/TestSuite/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
+            //// doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
+            ////doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
 
-                //string classnae = (string )doc.Root.Element("assembly/collection/test.type");
-                //string classnae1 = (string)doc.Root.Element("assembly/collection/test.type.value");
+            //XmlNode node = doc.DocumentElement.FirstChild;
 
-                //XmlNode node = doc.DocumentElement.FirstChild;
-
-                //string text = string.Empty;
-                //foreach (XmlNode n in node.ChildNodes)
-                //{
-                //    foreach (XmlNode n1 in n.ChildNodes)
-                //    {
-                //        if (n1.Attributes["result"]?.InnerText == "Fail")
-                //            text = n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText; //or loop through its children as well
-                //    }
-                //}
-
-                //File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
-                //                @"\ReRunTestResults.txt"), text);
-            //}
-            //catch
+            //string text = "FullyQualifiedName=";
+            //foreach (XmlNode n in node.ChildNodes)
             //{
-            //    Console.WriteLine("TestResults file doesn't exist");
+            //    foreach (XmlNode n1 in n.ChildNodes)
+            //    {
+            //        if (n1.Attributes["result"]?.InnerText == "Fail")
+            //            text = text + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText + "|";
+            //    }
             //}
 
-            //var query = from c in doc.Document.Element.SelectSingleNode("assembly/collection/test")
-            //            where (string)c.Attribute("result") == "Pass"
-            //            select c.Element("type").Value;
+            //File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
+            //                @"..\..\..\ReRunTestResults.txt"), text.Trim('|'));
+            ////}
+            ////catch(Exception ex)
+            ////{
+            ////Console.WriteLine(ex.Message);
+            ////Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
+            ////                    @"..\..\..\TestResults\TestResults.xml"));
+            ////}         select c.Element("type").Value;
         }
     }
 }
