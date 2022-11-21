@@ -1,7 +1,7 @@
 ﻿Feature: Calculator_Flake1
-	Simple calculator for adding two numbers
+	Calculator for Dividing a random number with 2
 
 @Calculator
-Scenario: Test- Calculator for dividing a random number with 2
+Scenario: Test 1 - Calculator for dividing a random number with 2
 	Given Divide a random number with 2
 	Then Remainder should be 0

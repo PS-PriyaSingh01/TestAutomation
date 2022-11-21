@@ -1,5 +1,5 @@
 ﻿Feature: Calculator_TestResult
-	Simple calculator for adding two numbers
+	Read Test Result xml File
 
 @Calculator	
 Scenario: Read Test Result File

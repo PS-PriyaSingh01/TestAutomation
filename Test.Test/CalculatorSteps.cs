@@ -72,7 +72,6 @@ namespace Test
         public void GivenReadTestResultFile()
         {
             var buildNumber = TestContext.Parameters["BuildNumber"].ToString();
-            Console.WriteLine("Environment.CurrentDirectory" + Environment.CurrentDirectory);
 
             if (buildNumber.Contains("Deflake"))
             {
@@ -83,11 +82,11 @@ namespace Test
                 //                    @"..\..\..\TestResults\TestResults.xml"));
 
                 string[] deflakedBuildNumber = buildNumber.Split(" ");
-                Console.WriteLine("DeflakedBuildNumber: " + deflakedBuildNumber[deflakedBuildNumber.Length - 1].Replace("#", string.Empty));
-                string path = "http://localhost:8080/job/TestSuite/" + deflakedBuildNumber[deflakedBuildNumber.Length-1].Replace("#", string.Empty) + "/artifact/Test.Test/TestResults/TestResults.xml";
-                doc.Load(path);
+                string resultArtifactPath = "http://localhost:8080/job/TestSuite/" + deflakedBuildNumber[deflakedBuildNumber.Length-1].Replace("#", string.Empty) + "/artifact/Test.Test/TestResults/TestResults.xml";
+                doc.Load(resultArtifactPath);
+
                 // doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
-                //doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
+                // doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
 
                 XmlNode node = doc.DocumentElement.FirstChild;
 
@@ -103,14 +102,12 @@ namespace Test
 
                 File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
                                 @"..\..\..\ReRunTestResults.txt"), text.Trim('|'));
+                //}
+                //catch(Exception ex)
+                //{
+                //Console.WriteLine(ex.Message);
+                //}
             }
-            //}
-            //catch(Exception ex)
-            //{
-            //Console.WriteLine(ex.Message);
-            //Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
-            //                    @"..\..\..\TestResults\TestResults.xml"));
-            //}     
         }
     }
 }

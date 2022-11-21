@@ -8,11 +8,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <SpecFlowObsoleteCodeBehindFiles Remove="FeatureFile\Calculator_Flake1 - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="FeatureFile\Calculator_Flake2 - Copy.feature.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="NUnit.ConsoleRunner" Version="3.15.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.22" />
     <PackageReference Include="XunitXml.TestLogger" Version="3.0.70" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="FeatureFile\Calculator_Flake3.feature.cs">
+      <DependentUpon>Calculator_Flake3.feature</DependentUpon>
+    </Compile>
+    <Compile Update="FeatureFile\Calculator_Flake2.feature.cs">
+      <DependentUpon>Calculator_Flake2.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="FeatureFile\Calculator_Flake3.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="FeatureFile\Calculator_Flake2.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
 
 </Project>
