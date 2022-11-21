@@ -84,13 +84,13 @@ namespace Test
 
             XmlNode node = doc.DocumentElement.FirstChild;
 
-            string text = "FullyQualifiedName=";
+            string text = string.Empty;
             foreach (XmlNode n in node.ChildNodes)
             {
                 foreach (XmlNode n1 in n.ChildNodes)
                 {
                     if (n1.Attributes["result"]?.InnerText == "Fail")
-                        text = text + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText + "|";
+                        text = text + "FullyQualifiedName = " + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText + "|";
                 }
             }
 
