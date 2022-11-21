@@ -78,7 +78,7 @@ namespace Test
             //doc.Load(Path.Combine(Environment.CurrentDirectory,
             //                    @"..\..\..\TestResults\TestResults.xml"));
 
-            doc.Load("http://localhost:8080/job/TestSuite/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
+            doc.Load("http://localhost:8080/job/TestSuite/402/artifact/Test.Test/TestResults/TestResults.xml");
             // doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
             //doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
 
