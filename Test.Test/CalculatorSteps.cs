@@ -71,31 +71,39 @@ namespace Test
         [Given(@"Read Test Result File")]
         public void GivenReadTestResultFile()
         {
+            var buildNumber = TestContext.Parameters["BuildNumber"].ToString();
             Console.WriteLine("Environment.CurrentDirectory" + Environment.CurrentDirectory);
-            //try
-            //{
-            XmlDocument doc = new XmlDocument();
-            //doc.Load(Path.Combine(Environment.CurrentDirectory,
-            //                    @"..\..\..\TestResults\TestResults.xml"));
 
-            doc.Load("http://localhost:8080/job/TestSuite/402/artifact/Test.Test/TestResults/TestResults.xml");
-            // doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
-            //doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
-
-            XmlNode node = doc.DocumentElement.FirstChild;
-
-            string text = string.Empty;
-            foreach (XmlNode n in node.ChildNodes)
+            if (buildNumber.Contains("Deflake"))
             {
-                foreach (XmlNode n1 in n.ChildNodes)
-                {
-                    if (n1.Attributes["result"]?.InnerText == "Fail")
-                        text = text + "FullyQualifiedName = " + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText + "|";
-                }
-            }
+                //try
+                //{
+                XmlDocument doc = new XmlDocument();
+                //doc.Load(Path.Combine(Environment.CurrentDirectory,
+                //                    @"..\..\..\TestResults\TestResults.xml"));
 
-            File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
-                            @"..\..\..\ReRunTestResults.txt"), text.Trim('|'));
+                string[] deflakedBuildNumber = buildNumber.Split(" ");
+                Console.WriteLine("DeflakedBuildNumber: " + deflakedBuildNumber[deflakedBuildNumber.Length - 1].Replace("#", string.Empty));
+                string path = "http://localhost:8080/job/TestSuite/" + deflakedBuildNumber[deflakedBuildNumber.Length-1].Replace("#", string.Empty) + "/artifact/Test.Test/TestResults/TestResults.xml";
+                doc.Load(path);
+                // doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
+                //doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
+
+                XmlNode node = doc.DocumentElement.FirstChild;
+
+                string text = string.Empty;
+                foreach (XmlNode n in node.ChildNodes)
+                {
+                    foreach (XmlNode n1 in n.ChildNodes)
+                    {
+                        if (n1.Attributes["result"]?.InnerText == "Fail")
+                            text = text + "FullyQualifiedName = " + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText + "|";
+                    }
+                }
+
+                File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
+                                @"..\..\..\ReRunTestResults.txt"), text.Trim('|'));
+            }
             //}
             //catch(Exception ex)
             //{
