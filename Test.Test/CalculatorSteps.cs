@@ -74,30 +74,36 @@ namespace Test.Steps
             Console.WriteLine("Environment.CurrentDirectory" + Environment.CurrentDirectory);
             //try
             //{
-                XmlDocument doc = new XmlDocument();
-                doc.Load(Path.Combine(Environment.CurrentDirectory,
-                                    @"..\..\..\..\..\lastSuccessfulBuild\artifact\Test.Test\TestResults\TestResults.xml"));
+            XmlDocument doc = new XmlDocument();
+            doc.Load(Path.Combine(Environment.CurrentDirectory,
+                                @"..\..\..\TestResults\TestResults.xml"));
 
-                XmlNode node = doc.DocumentElement.FirstChild;
+            //doc.Load("http://localhost:8080/job/TestSuite/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
 
-                string text = "FullyQualifiedName=";
-                foreach (XmlNode n in node.ChildNodes)
+            doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
+
+            //doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
+
+            XmlNode node = doc.DocumentElement.FirstChild;
+
+            string text = "FullyQualifiedName=";
+            foreach (XmlNode n in node.ChildNodes)
+            {
+                foreach (XmlNode n1 in n.ChildNodes)
                 {
-                    foreach (XmlNode n1 in n.ChildNodes)
-                    {
-                        if (n1.Attributes["result"]?.InnerText == "Fail")
-                            text = text + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText;
-                    }
+                    if (n1.Attributes["result"]?.InnerText == "Fail")
+                        text = text + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText;
                 }
+            }
 
-                File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
-                                @"..\..\..\ReRunTestResults.txt"), text);
+            File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
+                            @"..\..\..\ReRunTestResults.txt"), text);
             //}
             //catch(Exception ex)
             //{
-                //Console.WriteLine(ex.Message);
-                //Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
-                //                    @"..\..\..\TestResults\TestResults.xml"));
+            //Console.WriteLine(ex.Message);
+            //Console.WriteLine(Path.Combine(Environment.CurrentDirectory,
+            //                    @"..\..\..\TestResults\TestResults.xml"));
             //}
         }
     }
