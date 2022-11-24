@@ -20,22 +20,22 @@ namespace Test.Test.FeatureFile
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Calculator_Flake1")]
-    public partial class Calculator_Flake1Feature
+    [NUnit.Framework.DescriptionAttribute("Calculator_Flake3")]
+    public partial class Calculator_Flake3Feature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "Calculator_Flake1.feature"
+#line 1 "Calculator_Flake3.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "FeatureFile", "Calculator_Flake1", "\tSimple calculator for adding two numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "FeatureFile", "Calculator_Flake3", "\tCalculator for Dividing a random number with 2", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,14 +74,14 @@ namespace Test.Test.FeatureFile
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Test- Calculator for dividing a random number with 2")]
+        [NUnit.Framework.DescriptionAttribute("Test 3 - Calculator for dividing a random number with 2")]
         [NUnit.Framework.CategoryAttribute("Calculator")]
-        public virtual void Test_CalculatorForDividingARandomNumberWith2()
+        public virtual void Test3_CalculatorForDividingARandomNumberWith2()
         {
             string[] tagsOfScenario = new string[] {
                     "Calculator"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test- Calculator for dividing a random number with 2", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Test 3 - Calculator for dividing a random number with 2", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
