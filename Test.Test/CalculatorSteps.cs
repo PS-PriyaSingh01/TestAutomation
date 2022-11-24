@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using TechTalk.SpecFlow;
@@ -71,15 +72,17 @@ namespace Test
         [Given(@"Read Test Result File")]
         public void GivenReadTestResultFile()
         {
+            //IEnumerable<string> books = new string[] { Path.Combine(Environment.CurrentDirectory, @"..\..\..\TestResults\TestResults.xml"), Path.Combine(Environment.CurrentDirectory, @"..\..\..\\ReRunTestResults\TestResults.xml") };
+           
+            //NUnitMerger.MergeFiles(books, Path.Combine(Environment.CurrentDirectory, @"..\..\..\TestResults.xml"));
+
             var buildNumber = TestContext.Parameters["BuildNumber"].ToString();
 
             if (buildNumber.Contains("Deflake"))
             {
-                //try
-                //{
+                
                 XmlDocument doc = new XmlDocument();
-                //doc.Load(Path.Combine(Environment.CurrentDirectory,
-                //                    @"..\..\..\TestResults\TestResults.xml"));
+                //doc.Load(Path.Combine(Environment.CurrentDirectory, @"..\..\..\TestResults\TestResults.xml"));
 
                 string[] deflakedBuildNumber = buildNumber.Split(" ");
                 string resultArtifactPath = "http://localhost:8080/job/TestSuite/" + deflakedBuildNumber[deflakedBuildNumber.Length-1].Replace("#", string.Empty) + "/artifact/Test.Test/TestResults/TestResults.xml";
@@ -88,6 +91,7 @@ namespace Test
                 // doc.Load("$JENKINS_HOME/job/lastSuccessfulBuild/artifact/Test.Test/TestResults/TestResults.xml");
                 // doc.Load("$JENKINS_HOME/jobs//jobs//branches//builds/$BUILD_NUMBER/archive/");
 
+                // Reding XUnit Test Result File
                 XmlNode node = doc.DocumentElement.FirstChild;
 
                 string text = string.Empty;
@@ -102,11 +106,22 @@ namespace Test
 
                 File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
                                 @"..\..\..\ReRunTestResults.txt"), text.Trim('|'));
-                //}
-                //catch(Exception ex)
+
+                // Reding JUnit Test Result File
+                //XmlNode node = doc.DocumentElement.FirstChild;
+
+                //string text = string.Empty;
+                //foreach (XmlNode n in node.ChildNodes)
                 //{
-                //Console.WriteLine(ex.Message);
+                //    foreach (XmlNode n1 in n.ChildNodes)
+                //    {
+                //        if (n1.Attributes["result"]?.InnerText == "Fail")
+                //            text = text + "FullyQualifiedName = " + n1.Attributes["type"]?.InnerText + "." + n1.Attributes["name"]?.InnerText + "|";
+                //    }
                 //}
+
+                //File.WriteAllText(Path.Combine(Environment.CurrentDirectory,
+                //                @"..\..\..\ReRunTestResults.txt"), text.Trim('|'));
             }
         }
     }
