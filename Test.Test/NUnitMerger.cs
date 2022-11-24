@@ -16,7 +16,7 @@ namespace Test
             string finalResult = "";
             double totalTime = 0;
             int total = 0, errors = 0, failures = 0, notrun = 0, inconclusive = 0, ignored = 0, skipped = 0, invalid = 0;
-            foreach (var file in files)
+            foreach (var file in files) 
             {
                 var doc = XDocument.Load(file);
                 //var tr = doc.Element("test-results");
