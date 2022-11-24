@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TRX_Merger\TRX_Merger.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="FeatureFile\Calculator_Flake3.feature.cs">
       <DependentUpon>Calculator_Flake3.feature</DependentUpon>
     </Compile>
