@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TRX_Merger.TrxModel
+namespace ConsoleApp1
 {
-    public class Execution
+    class Program
     {
-        public string Id { get; set; }
+        static void Main(string[] args)
+        {
+        }
     }
 }
