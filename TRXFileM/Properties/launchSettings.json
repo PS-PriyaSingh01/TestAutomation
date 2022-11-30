@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TRXFileM": {
+      "commandName": "Project",
+      "commandLineArgs": "TRX_Merger.exe /trx:C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults\\ReRunTestResults.trx,C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResults\\TestResults.trx /output:C:\\PSSAutomation\\Test.Automation\\Test.Test\\TestResultsOutput.trx"
+    }
+  }
+}
