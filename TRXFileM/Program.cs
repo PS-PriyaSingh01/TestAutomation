@@ -114,13 +114,13 @@ namespace TRXFileM
                 bool isTrxFile = File.Exists(a) && a.EndsWith(".trx");
                 bool isDir = Directory.Exists(a);
 
-                //if (!isTrxFile && !isDir)
-                //    return new List<string>
-                //    {
-                //        string.Format("Error: {0} is not a trx file or directory", a)
-                //    };
+                if (!isTrxFile && !isDir)
+                    return new List<string>
+                    {
+                        string.Format("Error: {0} is not a trx file or directory", a)
+                    };
 
-                //if (isTrxFile)
+                if (isTrxFile)
                     paths.Add(a);
 
                 if (isDir)
