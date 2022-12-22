@@ -39,12 +39,6 @@ namespace TRXFileM
                     return 1;
                 }
 
-                if (args.Where(a => a.StartsWith("/report")).FirstOrDefault() == null)
-                {
-                    Console.WriteLine("Error: Only one trx file has been passed and there is no /report parameter. When having only one trx in /trx argument, /report parameter is required.");
-                    return 1;
-                }
-
                 if (args.Where(a => a.StartsWith("/output")).FirstOrDefault() != null)
                 {
                     Console.WriteLine("Error: /output parameter is not allowed when having only one trx in /trx argument!.");

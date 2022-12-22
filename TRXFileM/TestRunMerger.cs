@@ -70,6 +70,7 @@ namespace TRXFileM
                     }
                 }
                 allResults = allResults.Concat(testRuns[h].Results).ToList();
+                
                 if (allTestDefinitions.Count > 0)
                 {
                     for (int i = 0; i < allTestDefinitions.Count; i++)
@@ -85,6 +86,7 @@ namespace TRXFileM
                     }
                 }
                 allTestDefinitions = allTestDefinitions.Concat(testRuns[h].TestDefinitions).ToList();
+                
                 if (allTestEntries.Count > 0)
                 {
                     for (int i = 0; i < allTestEntries.Count; i++)
