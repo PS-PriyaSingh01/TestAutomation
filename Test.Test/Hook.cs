@@ -91,7 +91,10 @@ namespace PowerSportsSupportS.Tests
             }
 
             // Initialize Extent report before test starts
-            var htmlReporter = new ExtentHtmlReporter(Path.Combine(dirPath, "TestReport.html"));
+            //var htmlReporter = new ExtentHtmlReporter(Path.Combine(Environment.CurrentDirectory, "TestReport.html"));
+            var htmlReporter = new ExtentHtmlReporter(Path.Combine(Environment.CurrentDirectory, @"..\..\..\TestResults\index.html"));
+
+
             // htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             // Attach report to reporter
             extent = new ExtentReports();
@@ -99,12 +102,12 @@ namespace PowerSportsSupportS.Tests
             //#if RELEASE
             //if (TestContext.Parameters["ExecutionType"].ToString() == "Remote")
             //{
-                //klov = new ExtentKlovReporter();
-                //klov.InitMongoDbConnection("localhost", 27017); // address, host/port of MongoDB
-                //klov.ProjectName = "DS Test";
-                //klov.InitKlovServerConnection("http://localhost"); // Klov server address
-                //klov.ReportName = "PSS Test" + DateTime.Now.ToString();
-                //extent.AttachReporter(htmlReporter, klov);
+            //klov = new ExtentKlovReporter();
+            //klov.InitMongoDbConnection("localhost", 27017); // address, host/port of MongoDB
+            //klov.ProjectName = "DS Test";
+            //klov.InitKlovServerConnection("http://localhost"); // Klov server address
+            //klov.ReportName = "PSS Test" + DateTime.Now.ToString();
+            //extent.AttachReporter(htmlReporter, klov);
             //}
             //else extent.AttachReporter(htmlReporter);
             //#else
