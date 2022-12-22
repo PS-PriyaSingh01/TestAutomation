@@ -96,9 +96,9 @@ namespace PowerSportsSupportS.Tests
             // Attach report to reporter
             extent = new ExtentReports();
 
-#if RELEASE
-            if (TestContext.Parameters["ExecutionType"].ToString() == "Remote")
-            {
+            #if RELEASE
+            //if (TestContext.Parameters["ExecutionType"].ToString() == "Remote")
+            //{
                 klov = new ExtentKlovReporter();
                 klov.InitMongoDbConnection("10.30.2.244", 27017);
                 klov.ProjectName = "DS Test";
@@ -106,10 +106,10 @@ namespace PowerSportsSupportS.Tests
                 klov.InitKlovServerConnection("http://10.35.2.76:8080");
                 klov.ReportName = "PSS Test" + DateTime.Now.ToString();
                 extent.AttachReporter(htmlReporter, klov);
-            }
-            else extent.AttachReporter(htmlReporter);
-#else
-            extent.AttachReporter(htmlReporter);
+            //}
+            //else extent.AttachReporter(htmlReporter);
+            //#else
+            //extent.AttachReporter(htmlReporter);
             #endif
         }
 
