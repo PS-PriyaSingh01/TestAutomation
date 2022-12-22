@@ -84,15 +84,15 @@ namespace PowerSportsSupportS.Tests
         [BeforeTestRun]
         public static void TestInitalize()
         {
-            var dirPath = @"C:\extentreport\Test\";
+            var dirPath = Environment.CurrentDirectory + @"..\..\..\TestReport\";
             if (!Directory.Exists(dirPath))
             {
                 Directory.CreateDirectory(dirPath);
             }
 
             // Initialize Extent report before test starts
-            //var htmlReporter = new ExtentHtmlReporter(Path.Combine(Environment.CurrentDirectory, "TestReport.html"));
-            var htmlReporter = new ExtentHtmlReporter(Path.Combine(Environment.CurrentDirectory, @"..\..\..\TestResults\index.html"));
+            var htmlReporter = new ExtentHtmlReporter(Path.Combine(dirPath, "index.html"));
+            //var htmlReporter = new ExtentHtmlReporter(Path.Combine(Environment.CurrentDirectory, @"..\..\..\TestResults\index.html"));
 
 
             // htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
