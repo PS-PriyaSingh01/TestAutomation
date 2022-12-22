@@ -84,7 +84,7 @@ namespace PowerSportsSupportS.Tests
         [BeforeTestRun]
         public static void TestInitalize()
         {
-            var dirPath = @"C:\extentreport\";
+            var dirPath = @"C:\extentreport\Test\";
             if (!Directory.Exists(dirPath))
             {
                 Directory.CreateDirectory(dirPath);
