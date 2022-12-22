@@ -96,21 +96,20 @@ namespace PowerSportsSupportS.Tests
             // Attach report to reporter
             extent = new ExtentReports();
 
-            #if RELEASE
+#if RELEASE
             //if (TestContext.Parameters["ExecutionType"].ToString() == "Remote")
             //{
                 klov = new ExtentKlovReporter();
-                klov.InitMongoDbConnection("10.30.2.244", 27017);
+                klov.InitMongoDbConnection("localhost", 27017); // address, host/port of MongoDB
                 klov.ProjectName = "DS Test";
-                //// URL of the KLOV server
-                klov.InitKlovServerConnection("http://10.35.2.76:8080");
+                klov.InitKlovServerConnection("http://localhost"); // Klov server address
                 klov.ReportName = "PSS Test" + DateTime.Now.ToString();
                 extent.AttachReporter(htmlReporter, klov);
             //}
             //else extent.AttachReporter(htmlReporter);
             //#else
             //extent.AttachReporter(htmlReporter);
-            #endif
+#endif
         }
 
 
