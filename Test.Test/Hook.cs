@@ -96,8 +96,8 @@ namespace PowerSportsSupportS.Tests
             // Attach report to reporter
             extent = new ExtentReports();
 
-            #if RELEASE
-            if (Settings.ExecutionType == "remote")
+#if RELEASE
+            if (TestContext.Parameters["ExecutionType"].ToString() == "Remote")
             {
                 klov = new ExtentKlovReporter();
                 klov.InitMongoDbConnection("10.30.2.244", 27017);
@@ -108,7 +108,7 @@ namespace PowerSportsSupportS.Tests
                 extent.AttachReporter(htmlReporter, klov);
             }
             else extent.AttachReporter(htmlReporter);
-            #else
+#else
             extent.AttachReporter(htmlReporter);
             #endif
         }

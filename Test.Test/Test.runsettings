@@ -3,5 +3,6 @@
 	<!-- Parameters used by tests at runtime -->
 	<TestRunParameters>
 		<Parameter name="BuildNumber" value="#411: Deflake Build #410" />
+		<Parameter name="ExecutionType" value="Remote" />
 	</TestRunParameters>
 </RunSettings>
