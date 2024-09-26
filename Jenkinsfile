@@ -19,7 +19,8 @@ pipeline {
                         kubectl config view
                         testkube run test priya
                     '''
-                }
+					}
+				}
             }
         }
     }
