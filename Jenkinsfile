@@ -9,7 +9,7 @@ pipeline {
 		stage('Example') {
             steps {
                 script {
-                    //setupTestkube()
+                    setupTestkube()
                     sh 'testkube run test priya'
                 }
             }
