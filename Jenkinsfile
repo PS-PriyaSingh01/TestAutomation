@@ -27,7 +27,7 @@ pipeline {
                     bat """
                         echo %KUBECONFIG%
                         kubectl config view
-                        kubectl-testkube.exe run test priya
+                        kubectl-testkube run test priya
                     """
 					}
 				}
