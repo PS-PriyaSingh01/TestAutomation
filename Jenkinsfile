@@ -5,7 +5,8 @@ pipeline {
 		TK_NAMESPACE = 'testkube'
 		TK_VERSION = '1.16.7'
 		// KUBECONFIG = 'C:\\Users\\Priya.Singh\\.kube\\config'
-		TESTKUBE_PATH = "C:\\Program Files\\Testkube"
+		// TESTKUBE_PATH = "C:\\Program Files\\Testkube"
+		KUBECONFIG = credentials('kubeconfig-cred')
     }
 	
     stages {		
@@ -14,11 +15,20 @@ pipeline {
                 script {
                     // setupTestkube()
                     // bat 'kubectl testkube run test priya'
-                    bat '''
+                   
+					//bat '''
+                    //    echo %KUBECONFIG%
+                    //    kubectl config view
+                    //    kubectl testkube run test priya
+                    // '''
+					
+					withEnv(["PATH+TESTKUBE=C:\\Program Files\\Testkube"]) {
+                    bat """
                         echo %KUBECONFIG%
                         kubectl config view
-                        kubectl testkube run test priya
-                    '''
+                        kubectl-testkube.exe run test priya
+                    """
+					}
 				}
 		    }
         }
