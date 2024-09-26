@@ -22,6 +22,7 @@ pipeline {
                     //    kubectl testkube run test priya
                     // '''
 					
+					setupTestkube()
 					withEnv(["PATH+TESTKUBE=C:\\Program Files\\Testkube"]) {
                     bat """
                         echo %KUBECONFIG%
