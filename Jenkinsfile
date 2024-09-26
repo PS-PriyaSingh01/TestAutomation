@@ -3,14 +3,15 @@ pipeline {
   
     environment {
 		TK_NAMESPACE = 'testkube'
+		TK_VERSION = '1.16.7'
     }
 	
     stages {		
-		stage('Example') {
+		stage('Setup Testkube') {
             steps {
                 script {
-                    setupTestkube()
-                    sh 'testkube run test priya'
+                    // setupTestkube()
+                    bat 'kubectl testkube run test priya'
                 }
             }
         }
